@@ -5,13 +5,16 @@ const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
 const dotenv = require('dotenv');
 const path = require('path');
+const cors = require('cors');
 
 const errorMiddleWare = require("./middleware/error");
 
 //Configuration of dotenv 
 dotenv.config({ path: "backend/config/.env" });
 
-
+app.use(cors({
+    methods: ["GET", "POST", "PUT", "DELETE"],
+}))
 app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
